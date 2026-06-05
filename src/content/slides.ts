@@ -60,7 +60,7 @@ export const slides: Slide[] = [
       "A plain-language briefing for government staff — exam leaks, portal disasters, and why that chat app on your desk is a security problem.",
     variant: "hero",
     region: "india",
-    callout: "Rikhil Nellimarla · June 2026",
+    callout: "Sibi Chakkaravarthy Sethuraman · June 2026",
     visual: "hero-collage",
     stats: [
       { value: "20", label: "slides" },

@@ -7,7 +7,7 @@ const MUTED = "6B6560";
 
 export async function generatePptxBuffer(): Promise<Buffer> {
   const pptx = new PptxGenJS();
-  pptx.author = "Rikhil Nellimarla";
+  pptx.author = "Sibi Chakkaravarthy Sethuraman";
   pptx.title = "AI & Cybersecurity — Government Awareness";
   pptx.layout = "LAYOUT_16x9";
 

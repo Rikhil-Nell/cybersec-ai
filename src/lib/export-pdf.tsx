@@ -61,7 +61,7 @@ function SlidePages() {
   return (
     <Document
       title="AI & Cybersecurity — Government Awareness"
-      author="Rikhil Nellimarla"
+      author="Sibi Chakkaravarthy Sethuraman"
     >
       {slides.map((slide, i) => (
         <Page key={slide.id} size="A4" style={styles.page}>
