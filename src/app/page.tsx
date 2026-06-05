@@ -27,7 +27,7 @@ export default function HomePage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-[var(--color-muted)]">
-              20 scrollable slides — NEET, CBSE, deepfakes, Mythos, and
+              28 scrollable slides — threats, then real-world AI-defence wins, Mythos, and
               action checklists. Share the URL instead of screenshots.
             </p>
             <Button asChild className="w-full">

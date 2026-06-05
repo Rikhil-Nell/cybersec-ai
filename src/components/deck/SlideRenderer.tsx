@@ -12,6 +12,7 @@ const regionColors = {
   india: "border-orange-200 bg-orange-50 text-orange-900",
   global: "border-violet-200 bg-violet-50 text-violet-900",
   action: "border-emerald-200 bg-emerald-50 text-emerald-900",
+  reassure: "border-sky-200 bg-sky-50 text-sky-900",
 };
 
 export function SlideRenderer({ slide, presenterMode }: SlideRendererProps) {

@@ -26,7 +26,15 @@ export type SlideVisual =
   | "chatbot-stack"
   | "checklist"
   | "demo"
-  | "roadmap";
+  | "roadmap"
+  | "policing"
+  | "ai-positive"
+  | "calm-help"
+  | "safe-desk"
+  | "npci-fraud"
+  | "bigsleep"
+  | "aixcc"
+  | "ai-vs-ai";
 
 export interface SlideStat {
   value: string;
@@ -44,7 +52,7 @@ export interface Slide {
   subtitle?: string;
   bullets?: SlideBullet[];
   variant: SlideVariant;
-  region?: "india" | "global" | "action";
+  region?: "india" | "global" | "action" | "reassure";
   highlight?: string;
   callout?: string;
   stats?: SlideStat[];
@@ -63,7 +71,7 @@ export const slides: Slide[] = [
     callout: "Sibi Chakkaravarthy Sethuraman · June 2026",
     visual: "hero-collage",
     stats: [
-      { value: "20", label: "slides" },
+      { value: "28", label: "slides" },
       { value: "2024–26", label: "incidents covered" },
       { value: "India → World", label: "arc" },
     ],
@@ -330,6 +338,101 @@ export const slides: Slide[] = [
     ],
   },
   {
+    id: "help-exists",
+    title: "Pause — real help already exists",
+    subtitle:
+      "You don't need to become a cyber expert overnight. Government built channels for exactly this.",
+    bullets: [
+      {
+        text: "Step 1: Stop. Don't pay. Don't share OTPs.",
+        detail: "Scammers rush you so you can't think. Taking 60 seconds is allowed.",
+      },
+      {
+        text: "Step 2: Call 1930 or report at cybercrime.gov.in",
+        detail: "National helpline — banks may freeze fraudulent transfers if you act quickly.",
+      },
+      {
+        text: "Step 3: Walk to your IT desk or cyber cell the next morning",
+        detail: "You are not bothering anyone. This is their job.",
+      },
+      {
+        text: "Step 4: Tell two colleagues what happened — they may be next",
+        detail: "Sharing the story prevents panic, not embarrassment.",
+      },
+    ],
+    variant: "checklist",
+    region: "reassure",
+    visual: "calm-help",
+    highlight:
+      "One reported scam can save a dozen colleagues from the same trap. You did the right thing.",
+    callout: "You are not alone in this.",
+    aside: "Sources: research/04-policing-and-positive-ai.md (I4C / 1930 channels).",
+  },
+  {
+    id: "spot-fake-police",
+    title: "Fake 'cyber police' vs the real thing",
+    subtitle: "Scammers wear the uniform in a video. Real officers follow different rules.",
+    bullets: [
+      {
+        text: "Real: you report → you get a reference number → follow-up through official channels",
+      },
+      {
+        text: "Fake: urgent WhatsApp call, demands immediate UPI 'verification deposit'",
+      },
+      {
+        text: "Real: never asks for your ATM PIN, OTP, or remote screen-sharing app",
+      },
+      {
+        text: "Fake: threatens arrest in one hour unless you pay now",
+        detail: "Fear is the product. Slow down.",
+      },
+      {
+        text: "When in doubt: hang up, call 1930, verify on cybercrime.gov.in",
+      },
+    ],
+    variant: "comparison",
+    region: "reassure",
+    visual: "policing",
+    highlight: "Trust the number you dial — not the number that dialled you.",
+    aside:
+      "Sources: research/04-policing-and-positive-ai.md; deepfake impersonation patterns in research/02.",
+  },
+  {
+    id: "npci-ai-fraud",
+    title: "AI is already guarding your UPI payments",
+    subtitle:
+      "NPCI and RBI now run AI/ML models that score every suspicious transaction in real time — and have declined fraud before it left the account.",
+    bullets: [
+      {
+        text: "UPI fraud jumped 85% in FY 2023–24 — Rs 1,087 crore lost",
+        detail: "NPCI's answer: stop reacting after the theft, start predicting it.",
+      },
+      {
+        text: "AI assigns a risk score to mule accounts based on money-flow history",
+        detail: "When a fresh account suddenly collects from many people, the model flags it.",
+      },
+      {
+        text: "Banks get an alert → they call you → 'why this transfer?' before it clears",
+        detail: "NPCI says it has already declined fraudulent transactions this way.",
+      },
+      {
+        text: "RBI's upcoming DPIP will score payments using telecom + cybercrime data",
+        detail: "Mule accounts and synthetic IDs spotted before the money moves.",
+      },
+    ],
+    variant: "case-study",
+    region: "reassure",
+    visual: "npci-fraud",
+    callout: "This is AI on the citizen's side — quietly, millions of times a day.",
+    stats: [
+      { value: "85%", label: "UPI fraud rise FY24" },
+      { value: "Rs 1,087Cr", label: "annual loss tackled" },
+      { value: "Real-time", label: "risk scoring" },
+    ],
+    aside:
+      "Sources: NPCI CRO statements (Apr 2025) via The Hindu BusinessLine / Medianama / ET BFSI; RBI DPIP (RBIH).",
+  },
+  {
     id: "ripple",
     title: "One small action → damage at scale",
     bullets: [
@@ -370,6 +473,161 @@ export const slides: Slide[] = [
     variant: "comparison",
     region: "india",
     visual: "deanonymizer",
+  },
+  {
+    id: "ai-finds-bugs",
+    title: "AI caught a real attack before the hackers could strike",
+    subtitle:
+      "Google's 'Big Sleep' AI agent found a critical SQLite flaw that only criminals knew about — and got it patched first.",
+    bullets: [
+      {
+        text: "Nov 2024: Big Sleep found the first-ever zero-day discovered by an AI agent",
+        detail: "An exploitable memory bug in SQLite — software running inside billions of devices.",
+      },
+      {
+        text: "July 2025: it found CVE-2025-6965 — a flaw attackers were about to use",
+        detail: "Google says this is the first time AI directly foiled a real in-the-wild exploit.",
+      },
+      {
+        text: "Same idea protects the boring software your portals quietly depend on",
+        detail: "SQLite sits under countless government and banking apps.",
+      },
+      {
+        text: "The lesson: AI doesn't only help attackers — it gives defenders a head start",
+      },
+    ],
+    variant: "case-study",
+    region: "reassure",
+    visual: "bigsleep",
+    callout: "Found and fixed before users were ever at risk.",
+    stats: [
+      { value: "1st", label: "AI-found zero-day" },
+      { value: "2024–25", label: "SQLite flaws caught" },
+      { value: "Pre-exploit", label: "patched in time" },
+    ],
+    aside:
+      "Sources: Google Project Zero 'From Naptime to Big Sleep' (Oct 2024); Google Cloud blog + blog.google (CVE-2025-6965, Jul 2025).",
+  },
+  {
+    id: "ai-cyber-challenge",
+    title: "Machines that find and fix bugs — proven at DEF CON",
+    subtitle:
+      "DARPA's AI Cyber Challenge (Aug 2025) put autonomous AI systems against real code. They delivered.",
+    bullets: [
+      {
+        text: "AI systems scanned 54 million lines of code for vulnerabilities",
+      },
+      {
+        text: "Found 54 planted bugs and 18 real, unknown zero-days — then auto-wrote patches",
+        detail: "Average fix time: about 45 minutes per vulnerability.",
+      },
+      {
+        text: "Winners (Team Atlanta, Trail of Bits, Theori) shared $8.5M — and open-sourced everything",
+        detail: "DARPA will point these tools at real critical-infrastructure code, including health care.",
+      },
+      {
+        text: "This is the same kind of audit India's exam and citizen portals desperately need",
+      },
+    ],
+    variant: "case-study",
+    region: "reassure",
+    visual: "aixcc",
+    highlight:
+      "Imagine this run against a portal before launch — instead of teen hackers finding the master password after.",
+    stats: [
+      { value: "18", label: "real zero-days found" },
+      { value: "45 min", label: "avg auto-patch" },
+      { value: "Open", label: "source released" },
+    ],
+    aside:
+      "Sources: DARPA AIxCC results (darpa.mil, Aug 2025); CyberScoop; ARPA-H; aicyberchallenge.com.",
+  },
+  {
+    id: "ai-vs-ai",
+    title: "When attackers used AI, defenders' AI caught them",
+    subtitle:
+      "Nov 2025: Anthropic detected and shut down the first AI-run espionage campaign — in about 10 days.",
+    bullets: [
+      {
+        text: "A state-linked group tricked an AI agent into doing 80–90% of an attack",
+        detail: "Reconnaissance and exploitation at thousands of requests per second — impossible for humans.",
+      },
+      {
+        text: "Anthropic's threat-intelligence team spotted the abuse and disrupted it",
+        detail: "Accounts banned, ~30 targeted organisations warned, defenses upgraded.",
+      },
+      {
+        text: "The AI even 'hallucinated' fake credentials — slowing the attackers down",
+      },
+      {
+        text: "Takeaway: monitoring + AI defenders can match AI-speed attacks",
+      },
+    ],
+    variant: "case-study",
+    region: "reassure",
+    visual: "ai-vs-ai",
+    callout: "The defenders are using the same tools — and they're watching.",
+    stats: [
+      { value: "~10 days", label: "to detect + stop" },
+      { value: "~30", label: "targets warned" },
+      { value: "Disrupted", label: "campaign shut" },
+    ],
+    aside:
+      "Sources: Anthropic 'Disrupting the first reported AI-orchestrated cyber espionage campaign' (Nov 2025); MITRE ATT&CK C0062.",
+  },
+  {
+    id: "ai-for-good",
+    title: "So what can AI safely do at your desk?",
+    subtitle:
+      "Think of it as a fast junior clerk who never sleeps — but who shows every draft to you.",
+    bullets: [
+      {
+        text: "Summarise long public circulars into plain language for citizens",
+      },
+      {
+        text: "Draft first versions of replies and translations — you edit, approve, sign",
+        detail: "Tamil, Telugu, Marathi, Bengali notices with human review.",
+      },
+      {
+        text: "Answer routine staff questions at night via a guarded internal bot",
+        detail: "This workshop's /demo — try it after the session.",
+      },
+      {
+        text: "Check your own public footprint defensively",
+        detail: "/demo?tab=audit — see what strangers could infer about you.",
+      },
+    ],
+    variant: "checklist",
+    region: "reassure",
+    visual: "ai-positive",
+    highlight:
+      "Positive AI = approved tool + human sign-off + audit trail. You stay the decision-maker.",
+    aside: "Sources: research/04-policing-and-positive-ai.md (safe govt uses).",
+  },
+  {
+    id: "ai-you-in-charge",
+    title: "The machine proposes — you dispose",
+    subtitle: "That is the whole governance model. AI doesn't change who is accountable.",
+    bullets: [
+      {
+        text: "AI drafts → you read → you edit → you approve → you send",
+      },
+      {
+        text: "AI flags a risky transaction → a human officer makes the call",
+        detail: "Exactly how NPCI's fraud alerts work — the bank still phones you.",
+      },
+      {
+        text: "If output feels wrong, discard it — no penalty, no machine override",
+      },
+      {
+        text: "No honest vendor sells 'replace the officer' — only 'assist the officer'",
+      },
+    ],
+    variant: "diagram",
+    region: "reassure",
+    visual: "calm-help",
+    highlight: "Awareness ≠ anxiety. You now know both the risks and the tools fighting them.",
+    aside: "Sources: research/04; NPCI federated model; FinMin framing research/02.",
   },
   {
     id: "global-bridge",

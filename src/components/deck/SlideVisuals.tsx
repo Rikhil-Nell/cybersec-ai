@@ -12,9 +12,16 @@ import {
   MessageSquareWarning,
   ScanFace,
   ServerCrash,
+  Bug,
+  CheckCircle2,
+  CreditCard,
+  Search,
   Shield,
+  ShieldCheck,
   Skull,
+  Swords,
   Terminal,
+  Users,
   Zap,
 } from "lucide-react";
 
@@ -379,6 +386,268 @@ function NeetPanel({ year }: { year: "2024" | "2026" }) {
   );
 }
 
+function CalmHelpPanel() {
+  const steps = [
+    "Stop — don't pay",
+    "Call 1930",
+    "Report online",
+    "Tell IT tomorrow",
+  ];
+  return (
+    <Panel variant="light">
+      <p className="border-b border-sky-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-sky-700">
+        Calm steps
+      </p>
+      <div className="flex flex-1 flex-col justify-center gap-3 p-5">
+        {steps.map((step, i) => (
+          <div
+            key={step}
+            className="flex items-center gap-4 rounded-xl border border-sky-200 bg-sky-50/80 px-4 py-3"
+          >
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
+              {i + 1}
+            </span>
+            <p className="text-sm font-semibold text-stone-800">{step}</p>
+          </div>
+        ))}
+        <p className="rounded-xl border border-sky-200 bg-white px-4 py-3 text-sm text-sky-900">
+          You are not bothering anyone. This is what these channels exist for.
+        </p>
+      </div>
+    </Panel>
+  );
+}
+
+function SafeDeskPanel() {
+  const rows = [
+    { icon: FileWarning, text: "Redact first", sub: "Then summarise" },
+    { icon: Users, text: "Share 1930", sub: "Save a colleague" },
+    { icon: ShieldCheck, text: "Ask IT once", sub: "Approved tool list" },
+    { icon: Bot, text: "Try /demo bot", sub: "Guarded practice" },
+  ];
+  return (
+    <Panel>
+      <p className="border-b border-stone-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-stone-500">
+        Safe desk habits
+      </p>
+      <div className="flex flex-1 flex-col justify-center gap-3 p-5">
+        {rows.map((row) => (
+          <div
+            key={row.text}
+            className="flex items-center gap-4 rounded-xl border border-emerald-200 bg-emerald-50/50 px-4 py-3"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-300 bg-white">
+              <row.icon className="h-5 w-5 text-emerald-700" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-stone-800">{row.text}</p>
+              <p className="text-xs text-stone-600">{row.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+/** Real-world AI-win case panel: headline stat + supporting rows + source-style footer. */
+function CaseWinPanel({
+  icon: Icon,
+  badge,
+  headline,
+  headlineSub,
+  rows,
+  footer,
+  accent = "emerald",
+}: {
+  icon: typeof Shield;
+  badge: string;
+  headline: string;
+  headlineSub: string;
+  rows: { icon: typeof Shield; text: string }[];
+  footer: string;
+  accent?: "emerald" | "sky" | "violet" | "amber";
+}) {
+  const accents: Record<string, string> = {
+    emerald: "border-emerald-200 bg-emerald-50/60 text-emerald-800",
+    sky: "border-sky-200 bg-sky-50/70 text-sky-800",
+    violet: "border-violet-200 bg-violet-50/70 text-violet-800",
+    amber: "border-amber-200 bg-amber-50/70 text-amber-900",
+  };
+  const iconWrap: Record<string, string> = {
+    emerald: "border-emerald-300 text-emerald-700",
+    sky: "border-sky-300 text-sky-700",
+    violet: "border-violet-300 text-violet-700",
+    amber: "border-amber-300 text-amber-800",
+  };
+  return (
+    <Panel>
+      <div className="flex items-center gap-2 border-b border-stone-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-stone-500">
+        <Icon className="h-4 w-4" />
+        {badge}
+      </div>
+      <div className="flex flex-1 flex-col justify-center gap-4 p-5">
+        <div className={cn("rounded-xl border px-4 py-4", accents[accent])}>
+          <p className="font-display text-3xl leading-none">{headline}</p>
+          <p className="mt-2 text-sm font-medium">{headlineSub}</p>
+        </div>
+        <div className="space-y-2">
+          {rows.map((row) => (
+            <div key={row.text} className="flex items-center gap-3">
+              <div
+                className={cn(
+                  "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border bg-white",
+                  iconWrap[accent],
+                )}
+              >
+                <row.icon className="h-4 w-4" />
+              </div>
+              <p className="text-sm font-medium text-stone-700">{row.text}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[11px] leading-snug text-stone-400">{footer}</p>
+      </div>
+    </Panel>
+  );
+}
+
+function NpciFraudPanel() {
+  return (
+    <CaseWinPanel
+      icon={CreditCard}
+      accent="sky"
+      badge="India · UPI defence"
+      headline="Real-time"
+      headlineSub="AI risk score on suspicious UPI transfers"
+      rows={[
+        { icon: Search, text: "Flags mule accounts by money-flow pattern" },
+        { icon: ShieldCheck, text: "Bank calls you before the transfer clears" },
+        { icon: CheckCircle2, text: "Fraud transactions already declined" },
+      ]}
+      footer="NPCI / RBI (2025) — The Hindu BusinessLine, Medianama, ET BFSI"
+    />
+  );
+}
+
+function BigSleepPanel() {
+  return (
+    <CaseWinPanel
+      icon={Bug}
+      accent="emerald"
+      badge="Google · Big Sleep"
+      headline="1st"
+      headlineSub="zero-day ever found by an AI agent"
+      rows={[
+        { icon: Search, text: "Scans real code for unknown flaws" },
+        { icon: Shield, text: "Caught CVE-2025-6965 before attackers struck" },
+        { icon: CheckCircle2, text: "Patched before any user was at risk" },
+      ]}
+      footer="Google Project Zero & DeepMind (2024–2025)"
+    />
+  );
+}
+
+function AixccPanel() {
+  return (
+    <CaseWinPanel
+      icon={ShieldCheck}
+      accent="violet"
+      badge="DARPA · AIxCC · DEF CON 2025"
+      headline="18"
+      headlineSub="real zero-days found by autonomous AI"
+      rows={[
+        { icon: Search, text: "54M lines of code scanned" },
+        { icon: Bug, text: "Auto-patched in ~45 min each" },
+        { icon: CheckCircle2, text: "Winning systems open-sourced" },
+      ]}
+      footer="DARPA AIxCC results (Aug 2025) — darpa.mil, CyberScoop"
+    />
+  );
+}
+
+function AiVsAiPanel() {
+  return (
+    <CaseWinPanel
+      icon={Swords}
+      accent="amber"
+      badge="Anthropic · threat intel"
+      headline="~10 days"
+      headlineSub="to detect & shut an AI-run attack"
+      rows={[
+        { icon: Search, text: "Spotted AI doing 80–90% of an attack" },
+        { icon: Users, text: "~30 targeted orgs warned" },
+        { icon: Shield, text: "Accounts banned, defences upgraded" },
+      ]}
+      footer="Anthropic report (Nov 2025) — MITRE ATT&CK C0062"
+    />
+  );
+}
+
+function PolicingPanel() {
+  const rows = [
+    { icon: Shield, text: "cybercrime.gov.in", sub: "National reporting portal" },
+    { icon: MessageSquareWarning, text: "Helpline 1930", sub: "Report fraud fast" },
+    { icon: KeyRound, text: "Police logins leaked", sub: "Maharashtra Apr 2025" },
+    { icon: ScanFace, text: "Fake cyber inspectors", sub: "WhatsApp impersonation" },
+  ];
+  return (
+    <Panel>
+      <p className="border-b border-stone-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-stone-500">
+        Policing & cybercrime
+      </p>
+      <div className="flex flex-1 flex-col justify-center gap-3 p-5">
+        {rows.map((row) => (
+          <div
+            key={row.text}
+            className="flex items-center gap-4 rounded-xl border border-stone-200 bg-stone-50 px-4 py-3"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-accent)]/20 bg-[#fdf6f0]">
+              <row.icon className="h-5 w-5 text-[var(--color-accent)]" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-stone-800">{row.text}</p>
+              <p className="text-xs text-stone-500">{row.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
+function AiPositivePanel() {
+  const rows = [
+    { icon: Bot, text: "Guarded staff chatbot", sub: "Refusals + Indian context" },
+    { icon: Globe, text: "Translation & plain language", sub: "Human review before send" },
+    { icon: ShieldCheck, text: "Fraud pattern detection", sub: "Supports investigators" },
+    { icon: Lock, text: "Vendor audit before go-live", sub: "Not vibecoded CBSE" },
+  ];
+  return (
+    <Panel variant="light">
+      <p className="border-b border-stone-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-stone-500">
+        Positive uses
+      </p>
+      <div className="flex flex-1 flex-col justify-center gap-3 p-5">
+        {rows.map((row) => (
+          <div
+            key={row.text}
+            className="flex items-center gap-4 rounded-xl border border-emerald-200 bg-emerald-50/60 px-4 py-3"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-300 bg-white">
+              <row.icon className="h-5 w-5 text-emerald-700" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-stone-800">{row.text}</p>
+              <p className="text-xs text-stone-600">{row.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Panel>
+  );
+}
+
 function ChecklistVisual() {
   return (
     <Panel>
@@ -519,6 +788,14 @@ export function SlideVisuals({ slide }: { slide: Slide }) {
     checklist: <ChecklistVisual />,
     demo: <DemoVisual />,
     roadmap: <RoadmapVisual />,
+    policing: <PolicingPanel />,
+    "ai-positive": <AiPositivePanel />,
+    "calm-help": <CalmHelpPanel />,
+    "safe-desk": <SafeDeskPanel />,
+    "npci-fraud": <NpciFraudPanel />,
+    bigsleep: <BigSleepPanel />,
+    aixcc: <AixccPanel />,
+    "ai-vs-ai": <AiVsAiPanel />,
   };
 
   return <div className="h-full w-full">{map[v]}</div>;

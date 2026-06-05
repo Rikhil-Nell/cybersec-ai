@@ -9,11 +9,12 @@ Source material for the **AI & Cybersecurity** presentation deck and chatbot dem
 | [`01-india-education-failures.md`](01-india-education-failures.md) | NEET, CUET, CBSE OSM/S3 — user-provided synthesis |
 | [`02-india-additional-incidents.md`](02-india-additional-incidents.md) | SSC, UGC-NET, state leaks, govt portals, deepfakes — research agent |
 | [`03-global-ai-threats.md`](03-global-ai-threats.md) | Claude Mythos, phishing, exfiltration, exploit automation |
+| [`04-policing-and-positive-ai.md`](04-policing-and-positive-ai.md) | Policing/cybercrime channels, AI for investigations, positive govt uses |
 
 ## Presentation Arc
 
 1. **India-first** — Education leaks, vibecoded CBSE, human-operated threats today
-2. **India broader** — Govt workers pasting data into AI, deepfake scams, portal breaches
+2. **India broader** — Govt workers pasting data into AI, deepfake scams, policing & cybercrime, positive AI uses, portal breaches
 3. **Global** — Claude Mythos, automated phishing, prompt injection, CVE automation
 4. **Action** — DO/DON'T checklist, cybersecurity chatbot demo, department next steps
 

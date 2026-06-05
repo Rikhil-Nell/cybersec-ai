@@ -4,7 +4,7 @@ India-centric AI & cybersecurity awareness presentation and live chatbot demo fo
 
 ## What's included
 
-- **`/deck`** — 20 scrollable slides (NEET, CUET, CBSE OSM, deepfakes, Claude Mythos, action checklists)
+- **`/deck`** — 28 scrollable slides (threats → real-world AI-defence wins (Big Sleep, DARPA AIxCC, NPCI, Anthropic) → global → action)
 - **`/demo`** — Two tabs: guarded security chatbot + **live deanonymizer** Reddit OSINT exposure audit
 - **`/api/chat`** — OpenAI **Responses API** (not Chat Completions) with built-in `web_search`, SSE streaming
 - **`/api/audit`** — SSE-streamed exposure audit (deanonymizer pipeline)
