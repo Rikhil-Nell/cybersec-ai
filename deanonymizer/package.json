@@ -1,0 +1,50 @@
+{
+  "name": "deanonymizer",
+  "version": "0.1.0",
+  "description": "deanonymizer — consent-based privacy exposure auditor for your own Reddit / Hacker News footprint.",
+  "type": "module",
+  "main": "./dist/run-audit.js",
+  "types": "./dist/run-audit.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/run-audit.d.ts",
+      "import": "./dist/run-audit.js"
+    },
+    "./run-audit": {
+      "types": "./dist/run-audit.d.ts",
+      "import": "./dist/run-audit.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js"
+    },
+    "./web-consent": {
+      "types": "./dist/web-consent.d.ts",
+      "import": "./dist/web-consent.js"
+    }
+  },
+  "bin": {
+    "audit": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "audit": "tsx src/index.ts",
+    "start": "tsx src/index.ts",
+    "test": "tsx --test \"src/**/*.test.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.1",
+    "commander": "^12.1.0",
+    "openai": "^4.104.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prettier": "^3.8.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
